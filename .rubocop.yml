@@ -81,3 +81,7 @@ Style/FrozenStringLiteralComment:
 # メソッドパラメータ名の最小文字数を設定
 Naming/MethodParameterName:
   MinNameLength: 1
+
+#windowsの改行コードのエラー対策
+Style/EndOfLine: 
+  EnforcedStyle: lf
