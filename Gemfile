@@ -58,7 +58,6 @@ group :development, :test do
   gem 'rspec-rails' # 追加
 
   gem 'factory_bot_rails' # 追加
-
 end
 
 group :development do
@@ -78,7 +77,6 @@ group :development do
   gem 'rubocop-rspec' # 追加
 
   gem 'spring-commands-rspec' # 追記
-
 end
 
 group :test do
