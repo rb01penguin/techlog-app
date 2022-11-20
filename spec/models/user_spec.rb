@@ -8,7 +8,8 @@ describe User do
 
   describe '.first' do
     before do
-      create(:user, nickname: nickname, email: email)
+      @user = create(:user, nickname: nickname, email: email) # 修正
+      @post = create(:post, title: 'タイトル', content: '本文', user_id: @user.id) # 修正
     end
 
     subject { described_class.first }
@@ -17,6 +18,14 @@ describe User do
       expect(subject.nickname).to eq('テスト太郎')
       expect(subject.email).to eq('test@example.com')
     end
+    ####### ここから追加 #######
+    it '紐づくPostの情報を取得できる' do
+      expect(subject.posts.size).to eq(1)
+      expect(subject.posts.first.title).to eq('タイトル')
+      expect(subject.posts.first.content).to eq('本文')
+      expect(subject.posts.first.user_id).to eq(@user.id)
+    end
+    ####### ここまで追加 #######
   end
 
   describe 'validation' do
