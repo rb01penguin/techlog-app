@@ -62,5 +62,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include FactoryBot::Syntax::Methods # 最下段に追記
 
-  config.include Devise::Test::IntegrationHelpers, type: :system # 追加
+  config.include Devise::Test::IntegrationHelpers, type: :system # 追加:System Specでしか使わない
+  config.include Devise::Test::IntegrationHelpers, type: :request # 追加：Requests Specでしか使わない＞2種に増やした
+
 end
