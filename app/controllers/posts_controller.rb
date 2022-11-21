@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id # ログインユーザのIDを代入
     if @post.save
       flash[:notice] = '投稿しました'
-      redirect_to posts_path # 修正 投稿後、投稿一覧ページへリダイレクト
+      redirect_to root_path # 修正 投稿後、投稿一覧ページへリダイレクト
     else
       flash[:alert] = '投稿に失敗しました'
       render :new
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
       @post.destroy
       flash[:notice] = '投稿が削除されました'
     end
-    redirect_to posts_path
+    redirect_to root_path
   end
 
   private
