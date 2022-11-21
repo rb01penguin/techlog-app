@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show] # 修正TechLog では投稿の閲覧についてはログインを必要としないため、authenticate_user!から show アクションは対象外とします。
   
   def new
     @post = Post.new
@@ -14,6 +14,10 @@ class PostsController < ApplicationController
       flash[:alert] = '投稿に失敗しました'
       render :new
     end
+  end
+
+  def show # 追加
+    @post = Post.find_by(id: params[:id])
   end
 
   private
